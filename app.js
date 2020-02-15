@@ -1,3 +1,4 @@
+require('dotenv').config();
 var express = require('express');
 var app = express();
 
@@ -24,6 +25,6 @@ app.use('/api/employee', employee)
 
 
 
-app.listen(3004, function(){
-    console.log('App is listening on 3004')
+app.listen(process.env.PORT, function(){
+    console.log(`App is listening on ${process.env.PORT}`)
 })
