@@ -26,19 +26,19 @@ router.get("/employee", function(req, res) {
 
 router.post('/employee', function (req, res) {
     let userId= req.user.id;
-    let employeename = req.body.employeename;
-    let jobdescription = req.body.jobdescription;
-    let email = req.body.email;
-    let city = req.body.city;
-    let phone = req.body.phone
+    let firstname = req.body.firstname;
+    let lastname = req.body.lastname;
+    let username = req.body.username;
+    let jobtitle = req.body.jobtitle;
+    
 
     Employee.create({
         owner: userId,
-        employeename: employeename,
-        jobdescription: jobdescription,
-        email: email,
-        city: city,
-        phone: phone
+        firstname: firstname,
+        jobtitle: jobtitle,
+        lastname: lastname,
+        username: username,
+        
 
     }).then(function createSuccess(response) {
 
@@ -74,11 +74,11 @@ router.put('/employee/update/:id', function (req, res) {
     
     Employee.update(
         {
-            employeename: loggingData.employeename,
-            jobdescription: loggingData.jobdescription,
-            email: loggingData.email,
-            city: loggingData.city,
-            phone: loggingData.phone
+            firstname: loggingData.firstname,
+            lastname: loggingData.lastname,
+            jobtitle: loggingData.jobtitle,
+            username: loggingData.username,
+           
         },
         { where: { id: data, owner:userid } }
     ).then(
@@ -101,7 +101,7 @@ router.delete("/employee/delete/:id", function(req, res) {
       where: { id: data, owner: userid }
     }).then(
       function deleteLogSuccess(data) {
-        res.send("you removed a log");
+        res.send("You Removed A Log");
       },
       function deleteLogError(err) {
         res.send(500, err.message);

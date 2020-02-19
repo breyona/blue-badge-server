@@ -8,7 +8,9 @@ var bodyParser = require('body-parser');
 var user = require('./controllers/usercontroller')
 var employee = require('./controllers/employeecontroller')
 
-sequelize.sync();
+sequelize.sync({
+    force: true});
+    
 app.use(bodyParser.json());
 
 
